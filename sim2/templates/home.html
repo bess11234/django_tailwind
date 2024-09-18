@@ -1,65 +1,59 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Grid with Tailwind CSS</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static './output.css' %}" type="text/css"> <!-- We add the output Tailwind CSS here -->
-</head>
-<body class="h-screen flex justify-center items-center">
+{% extends 'layout.html' %}
+{% block title %}
+  Register
+{% endblock %}
+{% block main %}
+  <div class="w-fit m-auto">
+    <form class="m-3 bg-white/95 dark:bg-[#272c4f] px-12 py-6 my-12 rounded-lg shadow w-full" action="" method="post">
+      <h1 class="text-3xl mb-8">สมัครสมาชิก</h1>
+      {% csrf_token %}
+      <div class="flex flex-row">
+        <div class="flex flex-col justify-stretch gap-6">
+          <div>
+            <div class="flex flex-row gap-3 justify-between place-items-center">{{ form.email.label_tag }}
+                <input class="rounded shadow-md border-1 border-black/5 focus:ring-1 focus:ring-[#4c569b] dark:bg-[#4c569b] autofill:bg-yellow-200" type="email" name="email" id="{{ form.email.id_for_label }}" required>
+            </div>
+            {{ form.email.errors }}
+          </div>
 
-<div class="w-3/5 m-auto">
-    <h1 class="bg-black text-[#444444]">aspdfpasdlfpl</h1>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="grid gap-4">
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow shadow-lg" src="{{ photo_1 }}" alt="">
+          <div>
+            <div class="flex flex-row gap-3 justify-between place-items-center">{{ form.first_name.label_tag }}
+                <input class="rounded shadow-md border-1 border-black/5 focus:ring-1 focus:ring-[#4c569b] dark:bg-[#4c569b]" type="text" name="first_name" id="{{ form.first_name.id_for_label }}" required>
             </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_2 }}" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_3 }}" alt="">
-            </div>
-        </div>
-        <div class="grid gap-4">
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_4 }}" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_5 }}" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_6 }}" alt="">
-            </div>
-        </div>
-        <div class="grid gap-4">
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_7 }}" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_8 }}" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_9 }}" alt="">
-            </div>
-        </div>
-        <div class="grid gap-4">
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_10 }}" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_11 }}" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg shadow" src="{{ photo_12 }}" alt="">
-            </div>
-        </div>
-    </div>
-</div>
+            {{ form.first_name.errors }}
+          </div>
 
-</body>
-</html>
+          <div>
+            <div class="flex flex-row gap-3 justify-between place-items-center">{{ form.last_name.label_tag }}
+                <input class="rounded shadow-md border-1 border-black/5 focus:ring-1 focus:ring-[#4c569b] dark:bg-[#4c569b]" type="text" name="last_name" id="{{ form.last_name.id_for_label }}" required>
+            </div>
+            {{ form.last_name.errors }}
+          </div>
 
+          <div>
+            <div class="flex flex-row gap-3 justify-between place-items-center">{{ form.phone.label_tag }}
+                <input class="rounded shadow-md border-1 border-black/5 focus:ring-1 focus:ring-[#4c569b] dark:bg-[#4c569b]" type="text" name="phone" maxlength="10" minlength="10" id="{{ form.phone.id_for_label }}" required>
+            </div>
+            {{ form.phone.errors }}
+          </div>
+
+          <div>
+            <div class="flex flex-row gap-3 justify-between place-items-center">{{ form.password1.label_tag }}
+                <input class="rounded shadow-md border-1 border-black/5 focus:ring-1 focus:ring-[#4c569b] dark:bg-[#4c569b]" type="password" name="password1" id="{{ form.password1.id_for_label }}" required>
+            </div>
+            {{ form.password1.errors }}
+          </div>
+
+          <div>
+            <div class="flex flex-row gap-3 justify-between place-items-center">{{ form.password2.label_tag }}
+                <input class="rounded shadow-md border-1 border-black/5 focus:ring-1 focus:ring-[#4c569b] dark:bg-[#4c569b]" type="password" name="password2" id="{{ form.password2.id_for_label }}" required>
+            </div>
+            {{ form.password2.errors }}
+          </div>
+        </div>
+
+      </div>
+      <button class="px-3 py-2 mt-3 bg-[#4c569b] text-[#eef7fc] rounded shadow-md">Register</button>
+    </form>
+  </div>
+{% endblock %}

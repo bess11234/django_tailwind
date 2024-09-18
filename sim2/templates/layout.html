@@ -1,0 +1,54 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        TEST
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static './output.css' %}">
+    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+    {% block css %}
+
+    {% endblock %}
+    <style>
+      .errorlist {
+        font-size: small;
+        color: red;
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body class="bg-[#eef7fc] text-[#1b1e36] dark:bg-[#1b1e36] dark:text-[#eef7fc]">
+    {% block navbar %}
+      {% include 'navbar2.html' %}
+    {% endblock %}
+
+    {% block head %}
+
+    {% endblock %}
+
+    <main>
+      {% block main %}
+
+      {% endblock %}
+    </main>
+
+    {% block script %}
+      <script>
+      </script>
+    {% endblock %}
+    <script>
+        const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
+        const html = document.documentElement
+        if (darkThemeMq.matches) {
+          // Theme set to dark.
+        } else {
+          // Theme set to light.
+        }
+      </script>
+  </body>
+</html>
