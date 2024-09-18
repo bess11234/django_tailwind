@@ -18,7 +18,7 @@ module.exports = {
 }
 ```
 ```
-npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
+npx tailwindcss -i ./static/input.css -o ./static/output.css --watch
 ```
 
 # RUN SERVER
